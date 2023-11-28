@@ -1,39 +1,55 @@
 package dev.iesfranciscodelosrios.acdmusic.Model.Domain;
 
+import javax.persistence.*;
+import java.io.Serial;
+import java.io.Serializable;
+import java.lang.annotation.Repeatable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-public class Album {
+@Entity
+@Table(name = "ALBUM")
+public class Album implements Serializable {
+    private static final long serialVersionUID = 1L;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="ID_ALBUM")
     private int idAlbum;
-    private int idArtist;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ID_ARTIST")
+    private Artist artist;
+    @Column(name = "NAME")
     private String name;
+    @Column(name = "DATE")
     private String date;
+    @Column(name = "PICTURE")
     private String picture;
+    @Column(name = "REPRODUCTIONS")
     private Integer reproductions;
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
     private List<Song> songs;
 
-    public Album(int idAlbum, int idArtist, String name, String date, String picture, Integer reproductions) {
+
+    public Album(int idAlbum, Artist artist, String name, String date, String picture, Integer reproductions, List<Song> songs) {
         this.idAlbum = idAlbum;
-        this.idArtist = idArtist;
-        this.name = name;
-        this.date = date;
-        this.picture = picture;
-        this.reproductions = reproductions;
-        this.songs = new ArrayList<>();
-    }
-
-    public Album() {
-        this.songs = new ArrayList<>();
-    }
-
-    public Album(int idArtist, String name, String date, String picture, Integer reproductions, List<Song> songs) {
-        this.idArtist = idArtist;
+        this.artist = artist;
         this.name = name;
         this.date = date;
         this.picture = picture;
         this.reproductions = reproductions;
         this.songs = songs;
+    }
+
+    public Album(Artist artist, String name, String date, String picture, Integer reproductions, List<Song> songs) {
+        this.artist = artist;
+        this.name = name;
+        this.date = date;
+        this.picture = picture;
+        this.reproductions = reproductions;
+        this.songs = songs;
+    }
+
+    public Album() {
+        this.songs = new ArrayList<>();
     }
 
     public int getIdAlbum() {
@@ -44,12 +60,12 @@ public class Album {
         this.idAlbum = idAlbum;
     }
 
-    public int getIdArtist() {
-        return idArtist;
+    public Artist getArtist() {
+        return artist;
     }
 
-    public void setIdArtist(int idArtist) {
-        this.idArtist = idArtist;
+    public void setArtist(Artist artist) {
+        this.artist = artist;
     }
 
     public String getName() {
@@ -113,7 +129,7 @@ public class Album {
     public String toString() {
         return "Album{" +
                 "idAlbum=" + idAlbum +
-                ", idArtist=" + idArtist +
+                ", artist=" + artist +
                 ", name='" + name + '\'' +
                 ", date='" + date + '\'' +
                 ", picture='" + picture + '\'' +
