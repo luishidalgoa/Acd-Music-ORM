@@ -10,7 +10,7 @@
             <property name="javax.persistence.jdbc.user" value="root" />
             <property name="javax.persistence.jdbc.password" value="1234" />
 
-            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
             <property name="hibernate.hbm2ddl.auto" value="create-drop" /> <!--validate (ya debería existir -> el más seguro en producción si ya está creado)) craete / create-drop || update -->
             <property name="hibernate.show_sql" value="false"/><!--Muestra los select (solo para modo produccion)-->
         </properties>
