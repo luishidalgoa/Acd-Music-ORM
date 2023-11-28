@@ -4,6 +4,7 @@ module dev.iesfranciscodelosrios.acdmusic {
     requires javafx.media;
     requires java.persistence;
 
+
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
 
