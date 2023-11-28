@@ -1,5 +1,11 @@
 package dev.iesfranciscodelosrios.acdmusic.Model.Domain;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import java.util.Set;
+@Entity
+@Table
 public class User {
     protected int id;
     protected String nickName;
@@ -8,6 +14,8 @@ public class User {
     protected String picture;
     protected String email;
     private String password;
+    @ManyToMany(mappedBy = "subscribedUsers")
+    private Set<ReproductionList> subscribedLists;
 
     public User(int id, String nickName, String name, String lastName, String picture, String email, String password) {
         this.id = id;
