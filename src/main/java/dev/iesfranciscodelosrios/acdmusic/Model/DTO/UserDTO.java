@@ -38,7 +38,17 @@ public class UserDTO {
         picture = "";
         email = "";
     }
-
+    public static User toUser(UserDTO user){
+        User result = new User();
+        result.setId(user.getId());
+        result.setName(user.getName());
+        result.setEmail(user.getName());
+        result.setPicture(user.getPicture());
+        result.setNickName(user.getNickName());
+        result.setLastName(user.getLastName());
+        result.setPassword(null);
+        return result;
+    }
     public int getId() {
         return id;
     }

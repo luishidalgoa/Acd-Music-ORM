@@ -2,11 +2,14 @@ package dev.iesfranciscodelosrios.acdmusic.Model.Domain;
 
 import dev.iesfranciscodelosrios.acdmusic.Model.DTO.UserDTO;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
-
+@Entity
 public class Comment {
     private int id;
     private UserDTO user;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "")
     private int reproductionListId;
     private LocalDateTime date;
     private String description;

@@ -2,10 +2,11 @@ package dev.iesfranciscodelosrios.acdmusic.Model.Domain;
 
 import dev.iesfranciscodelosrios.acdmusic.Model.Enum.Genre;
 
+import javax.persistence.Entity;
 import java.sql.Time;
 import java.time.LocalTime;
 import java.util.Objects;
-
+@Entity
 public class Song {
     private int id_song;
     private int id_album;
