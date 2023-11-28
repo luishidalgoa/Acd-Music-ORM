@@ -103,18 +103,5 @@ class ReproductionListDAOTest {
         assertTrue(ReproductionListDAO.getInstance().removeReproductionList(1));
     }
 
-    @Test
-    @Order(12)
-    /**
-     * Vamos a resetear el autoincremental de la tabla reproductionlist
-     */
-    void reset(){
-        Connection conn = ConnectionData.getConnection();
-        try {
-            conn.createStatement().executeUpdate("ALTER TABLE rythm.reproductionlist AUTO_INCREMENT = 1;");
-            conn.createStatement().executeUpdate("ALTER TABLE rythm.commentlistusers AUTO_INCREMENT = 1;");
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }
+
 }

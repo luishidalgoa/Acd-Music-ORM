@@ -3,6 +3,8 @@ module dev.iesfranciscodelosrios.acdmusic {
     requires javafx.fxml;
     requires javafx.media;
     requires java.persistence;
+    requires java.xml;
+    requires java.xml.bind;
 
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
