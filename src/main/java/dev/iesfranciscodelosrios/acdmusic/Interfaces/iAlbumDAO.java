@@ -1,6 +1,7 @@
 package dev.iesfranciscodelosrios.acdmusic.Interfaces;
 
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Album;
+import dev.iesfranciscodelosrios.acdmusic.Model.Domain.User;
 
 import java.util.Set;
 
@@ -26,7 +27,7 @@ public interface iAlbumDAO {
      * @Param artist artista del cual se quiere buscar los albumes
      * @return lista de albumes de un artista
      */
-    public Set<Album> searchAllAlbumsByArtist(ArtistDTO artist);
+    public Set<Album> searchAllAlbumsByArtist(User user);
 
     /**
      * consultara a la bbdd los albumes subidos mas recientemente. Devolviendo asi una lista

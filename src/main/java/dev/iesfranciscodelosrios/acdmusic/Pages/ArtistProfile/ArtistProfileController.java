@@ -5,6 +5,7 @@ import dev.iesfranciscodelosrios.acdmusic.Components.AlbumCard.AlbumCardControll
 import dev.iesfranciscodelosrios.acdmusic.Components.GenericForm.GenericFormController;
 import dev.iesfranciscodelosrios.acdmusic.Model.DAO.AlbumDAO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Album;
+import dev.iesfranciscodelosrios.acdmusic.Model.Domain.User;
 import dev.iesfranciscodelosrios.acdmusic.Model.Enum.Style;
 import dev.iesfranciscodelosrios.acdmusic.Services.FilesS;
 import dev.iesfranciscodelosrios.acdmusic.Services.Login;
@@ -159,7 +160,7 @@ public class ArtistProfileController {
 
     public void updateSongsContainer() {
         vbox_container.getChildren().clear();
-        Set<Album> albumes = AlbumDAO.getInstance().searchAllAlbumsByArtist(artist);
+        Set<Album> albumes = AlbumDAO.getInstance().searchAllAlbumsByArtist(new User(artist.getId_user()));
         if (albumes != null && !albumes.isEmpty()) {
             for (Album album : albumes) {
                 FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Components/AlbumCard/AlbumCard.fxml"));

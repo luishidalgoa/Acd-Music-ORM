@@ -3,6 +3,8 @@ package dev.iesfranciscodelosrios.acdmusic.Model.DAO;
 import dev.iesfranciscodelosrios.acdmusic.Connection.ConnectionData;
 import dev.iesfranciscodelosrios.acdmusic.Interfaces.iAlbumDAO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Album;
+import dev.iesfranciscodelosrios.acdmusic.Model.Domain.User;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import java.util.HashSet;
@@ -24,14 +26,20 @@ public class AlbumDAO implements iAlbumDAO {
     @Override
     public boolean addAlbum(Album album) {
         EntityManager manager = ConnectionData.emf.createEntityManager();
-        manager.getTransaction().begin();
-        manager.persist(album);
-        if (album == null) {
+        try {
+            manager.getTransaction().begin();
+            manager.persist(album);
+            manager.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            if (manager.getTransaction().isActive()) {
+                manager.getTransaction().rollback();
+            }
+            e.printStackTrace();
             return false;
+        } finally {
+            manager.close();
         }
-        manager.getTransaction().commit();
-        manager.close();
-        return true;
     }
 
     @Override
@@ -57,46 +65,85 @@ public class AlbumDAO implements iAlbumDAO {
     }
 
     @Override
-    public Set<Album> searchAllAlbumsByArtist(ArtistDTO artist) {
+    public Set<Album> searchAllAlbumsByArtist(User user) {
         EntityManager manager = ConnectionData.emf.createEntityManager();
-        manager.getTransaction().begin();
-        Set<Album> albums = new HashSet<>(manager.createQuery("FROM Album a WHERE a.artist = :artist", Album.class)
-                .setParameter("artist", artist)
-                .getResultList());
-        manager.getTransaction().commit();
-        manager.close();
-        return albums;
+        try {
+            manager.getTransaction().begin();
+            Set<Album> albums = new HashSet<>(manager
+                    .createQuery("FROM Album a WHERE a.user = :user", Album.class)
+                    .setParameter("user", user)
+                    .getResultList());
+            manager.getTransaction().commit();
+            return albums;
+        } catch (Exception e) {
+            if (manager.getTransaction().isActive()) {
+                manager.getTransaction().rollback();
+            }
+            e.printStackTrace();
+            return new HashSet<>();
+        } finally {
+            manager.close();
+        }
     }
 
     @Override
     public Set<Album> searchMoreRecent() {
         EntityManager manager = ConnectionData.emf.createEntityManager();
-        manager.getTransaction().begin();
-        Set<Album> albums = new HashSet<>();
-        albums.addAll(manager.createQuery("FROM Album ORDER BY date DESC", Album.class).setMaxResults(3).getResultList());
-        manager.getTransaction().commit();
-        manager.close();
-        return albums;
+        try {
+            manager.getTransaction().begin();
+            Set<Album> albums = new HashSet<>(manager
+                    .createQuery("FROM Album a ORDER BY a.date DESC", Album.class)
+                    .setMaxResults(3)
+                    .getResultList());
+            manager.getTransaction().commit();
+            return albums;
+        } catch (Exception e) {
+            if (manager.getTransaction().isActive()) {
+                manager.getTransaction().rollback();
+            }
+            e.printStackTrace();
+            return new HashSet<>();
+        } finally {
+            manager.close();
+        }
     }
 
     @Override
     public Album updateAlbum(int id, String newName) {
         EntityManager manager = ConnectionData.emf.createEntityManager();
-        manager.getTransaction().begin();
-        Album album = manager.find(Album.class, id);
-        album.setName(newName);
-        manager.getTransaction().commit();
-        manager.close();
-        return album;
+        try {
+            manager.getTransaction().begin();
+            Album album = manager.find(Album.class, id);
+            album.setName(newName);
+            manager.getTransaction().commit();
+            return album;
+        } catch (Exception e) {
+            if (manager.getTransaction().isActive()) {
+                manager.getTransaction().rollback();
+            }
+            e.printStackTrace();
+            return null;
+        } finally {
+            manager.close();
+        }
     }
 
     public Album getAlbumById(int id) {
         EntityManager manager = ConnectionData.emf.createEntityManager();
-        manager.getTransaction().begin();
-        Album album = manager.find(Album.class, id);
-        manager.getTransaction().commit();
-        manager.close();
-        return album;
+        try {
+            manager.getTransaction().begin();
+            Album album = manager.find(Album.class, id);
+            manager.getTransaction().commit();
+            return album;
+        } catch (Exception e) {
+            if (manager.getTransaction().isActive()) {
+                manager.getTransaction().rollback();
+            }
+            e.printStackTrace();
+            return null;
+        } finally {
+            manager.close();
+        }
     }
 
     /**
@@ -114,6 +161,11 @@ public class AlbumDAO implements iAlbumDAO {
             manager.getTransaction().commit();
             return album;
         } catch (NoResultException e) {
+            return null;
+        } catch (Exception e) {
+            if (manager.getTransaction().isActive()) {
+                manager.getTransaction().rollback();
+            }
             e.printStackTrace();
             return null;
         } finally {
