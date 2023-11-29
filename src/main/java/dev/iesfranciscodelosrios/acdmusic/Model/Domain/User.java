@@ -1,18 +1,27 @@
 package dev.iesfranciscodelosrios.acdmusic.Model.Domain;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Set;
 @Entity
 @Table
 public class User {
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
     protected int id;
+    @Column(name = "NICKNAME")
     protected String nickName;
+    @Column(name = "NAME")
     protected String name;
+    @Column(name = "LASTNAME")
     protected String lastName;
+    @Column(name = "PICTURE")
     protected String picture;
+    @Column(name = "EMAIL")
     protected String email;
+    @Column(name = "PASSWORD")
     private String password;
     @ManyToMany(mappedBy = "subscribedUsers")
     private Set<ReproductionList> subscribedLists;
@@ -52,6 +61,12 @@ public class User {
         this.email = email;
     }
 
+    public Set<ReproductionList> getSubscribedLists() {
+        return subscribedLists;
+    }
+    public void setSubscribedLists(Set<ReproductionList> subscribedLists) {
+        this.subscribedLists = subscribedLists;
+    }
     public int getId() {
         return id;
     }

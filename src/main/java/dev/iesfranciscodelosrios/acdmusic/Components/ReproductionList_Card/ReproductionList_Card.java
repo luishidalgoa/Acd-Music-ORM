@@ -60,7 +60,7 @@ abstract public class ReproductionList_Card {
     public void setData(ReproductionList obj){
         rl = obj;
         //apuntamos al archivo con la imagen del album de la primera cancion de la lista. Para asi mostrarla como foto principal de la lista
-        int findIdAlbumforFirstSong = rl.getSongs()!=null?rl.getSongs().stream().findFirst().get().getId_album():-1;
+        int findIdAlbumforFirstSong = rl.getSongs()!=null?rl.getSongs().stream().findFirst().get().getAlbum().getIdAlbum():-1;
         if(label_username!=null){
             label_username.setText(rl.getOwner().getNickName());
         }

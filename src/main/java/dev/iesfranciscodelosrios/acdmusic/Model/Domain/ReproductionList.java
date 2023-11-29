@@ -27,7 +27,7 @@ public class ReproductionList {
     private Set<Song> songs;
 
     @OneToMany(mappedBy = "reproductionList", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comment> comments;
+    private Set<Comment> comments;
 
     @Column(name = "name")
     private String name;
@@ -46,7 +46,7 @@ public class ReproductionList {
 
 
 
-    public ReproductionList(int id, String name, String description, UserDTO owner, Set<Song> songs, ArrayList<Comment> comments) {
+    public ReproductionList(int id, String name, String description, UserDTO owner, Set<Song> songs, Set<Comment> comments) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -55,7 +55,7 @@ public class ReproductionList {
         this.comments = comments;
     }
 
-    public ReproductionList(String name, String description, UserDTO owner, Set<Song> songs, ArrayList<Comment> comments) {
+    public ReproductionList(String name, String description, UserDTO owner, Set<Song> songs, Set<Comment> comments) {
         this.name = name;
         this.description = description;
         this.owner = UserDTO.toUser(owner);
@@ -137,11 +137,23 @@ public class ReproductionList {
         this.songs = songs;
     }
 
-    public List<Comment> getComments() {
+    public Set<Comment> getComments() {
         return comments;
     }
 
-    public void setComments(List<Comment> comments) {
+    public void setComments(Set<Comment> comments) {
         this.comments = comments;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public Set<User> getSubscribedUsers() {
+        return subscribedUsers;
+    }
+
+    public void setSubscribedUsers(Set<User> subscribedUsers) {
+        this.subscribedUsers = subscribedUsers;
     }
 }
