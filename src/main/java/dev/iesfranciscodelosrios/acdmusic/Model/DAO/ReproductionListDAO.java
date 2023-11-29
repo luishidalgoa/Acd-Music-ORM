@@ -2,17 +2,13 @@ package dev.iesfranciscodelosrios.acdmusic.Model.DAO;
 
 import dev.iesfranciscodelosrios.acdmusic.Connection.ConnectionData;
 import dev.iesfranciscodelosrios.acdmusic.Interfaces.iReproductionListDAO;
-import dev.iesfranciscodelosrios.acdmusic.Model.DTO.UserDTO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Comment;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.ReproductionList;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Song;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.User;
-import dev.iesfranciscodelosrios.acdmusic.Services.Login;
 
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import java.sql.*;
 import java.util.HashSet;
 import java.util.Set;
 

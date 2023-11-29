@@ -2,7 +2,6 @@ package dev.iesfranciscodelosrios.acdmusic.Model.DAO;
 
 import dev.iesfranciscodelosrios.acdmusic.Connection.ConnectionData;
 import dev.iesfranciscodelosrios.acdmusic.Interfaces.iAlbumDAO;
-import dev.iesfranciscodelosrios.acdmusic.Model.DTO.ArtistDTO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Album;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;

@@ -1,7 +1,6 @@
 package dev.iesfranciscodelosrios.acdmusic.Components.ArtistCard;
 
 import dev.iesfranciscodelosrios.acdmusic.App;
-import dev.iesfranciscodelosrios.acdmusic.Model.DTO.ArtistDTO;
 import dev.iesfranciscodelosrios.acdmusic.Pages.ArtistProfile.ArtistProfileController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
