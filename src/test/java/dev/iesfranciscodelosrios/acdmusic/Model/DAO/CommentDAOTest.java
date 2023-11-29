@@ -1,7 +1,6 @@
 package dev.iesfranciscodelosrios.acdmusic.Model.DAO;
 
 import dev.iesfranciscodelosrios.acdmusic.Connection.ConnectionData;
-import dev.iesfranciscodelosrios.acdmusic.Model.DTO.UserDTO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Comment;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.ReproductionList;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.User;
@@ -13,7 +12,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)

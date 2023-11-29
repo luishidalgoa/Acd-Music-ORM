@@ -1,6 +1,5 @@
 package dev.iesfranciscodelosrios.acdmusic.Model.DAO;
 
-import dev.iesfranciscodelosrios.acdmusic.Model.DTO.UserDTO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.User;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;

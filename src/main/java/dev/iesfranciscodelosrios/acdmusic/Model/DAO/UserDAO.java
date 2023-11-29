@@ -2,7 +2,6 @@ package dev.iesfranciscodelosrios.acdmusic.Model.DAO;
 
 import dev.iesfranciscodelosrios.acdmusic.Connection.ConnectionData;
 import dev.iesfranciscodelosrios.acdmusic.Interfaces.iUserDAO;
-import dev.iesfranciscodelosrios.acdmusic.Model.DTO.UserDTO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.User;
 
 import java.sql.*;

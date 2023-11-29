@@ -2,12 +2,7 @@ package dev.iesfranciscodelosrios.acdmusic.Services;
 
 import dev.iesfranciscodelosrios.acdmusic.Interfaces.iLogin;
 import dev.iesfranciscodelosrios.acdmusic.Model.DAO.UserDAO;
-import dev.iesfranciscodelosrios.acdmusic.Model.DTO.UserDTO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.User;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -19,7 +14,7 @@ public class Login implements iLogin {
     private Login() {
     }
 
-    private static UserDTO currentUser;
+    private static User currentUser;
 
     private UserDAO udao= new UserDAO();
 
@@ -30,13 +25,13 @@ public class Login implements iLogin {
      * @return UserDTO en caso de que la autenticación sea satisfactoria y null en cualquier otro caso
      */
     @Override
-    public UserDTO Auth(User user) {
+    public User Auth(User user) {
         if (user == null) {
             return null;
         } else {
             User BDUser = udao.searchByNicknameLogin(user.getNickName());
             if(BDUser!=null && BDUser.getPassword().equals(encryptPassword(user.getPassword()))){
-                UserDTO result = UserDAO.getInstance().searchById(BDUser.getId());
+                User result = UserDAO.getInstance().searchById(BDUser.getId());
                 setCurrentUser(result);
                 return result;
             }
@@ -77,13 +72,13 @@ public class Login implements iLogin {
      * @return User provisto en formato DTO o null en caso de que user este vacio
      */
     @Override
-    public UserDTO Register(User user) {
+    public User Register(User user) {
         if (user == null) {
             return null;
         } else {
             user.setPassword(encryptPassword(user.getPassword()));
             udao.addUser(user);
-            UserDTO result = udao.setUserToUserDTO(user);
+            User result = udao.setUserToUserDTO(user);
             setCurrentUser(result);
             return result;
         }
@@ -95,7 +90,7 @@ public class Login implements iLogin {
      */
     @Override
     public boolean Logout() {
-        UserDTO current = getCurrentUser();
+        User current = getCurrentUser();
         current = null;
         setCurrentUser(current);
         if (current == null) return true;
@@ -107,7 +102,7 @@ public class Login implements iLogin {
      * Metodo para obtener el usuario actual
      * @return UserDTO del user activo en la app
      */
-    public UserDTO getCurrentUser() {
+    public User getCurrentUser() {
         return currentUser;
     }
 
@@ -115,7 +110,7 @@ public class Login implements iLogin {
      * Metodo para setear el usuario actual en la app
      * @param currentUser UserDTO del usaurio actual en la app
      */
-    public void setCurrentUser(UserDTO currentUser) {
+    public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
     }
 
