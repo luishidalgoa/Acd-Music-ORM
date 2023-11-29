@@ -7,12 +7,6 @@ import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Album;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.Set;
 

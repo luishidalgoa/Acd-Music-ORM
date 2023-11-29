@@ -4,7 +4,6 @@ import dev.iesfranciscodelosrios.acdmusic.Model.Enum.Genre;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Time;
 import java.time.LocalTime;
 import java.util.Objects;
 @Entity
