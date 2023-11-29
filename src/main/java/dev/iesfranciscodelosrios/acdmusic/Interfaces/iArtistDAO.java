@@ -1,6 +1,5 @@
 package dev.iesfranciscodelosrios.acdmusic.Interfaces;
 
-import dev.iesfranciscodelosrios.acdmusic.Model.DTO.ArtistDTO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Artist;
 
 import java.util.Set;

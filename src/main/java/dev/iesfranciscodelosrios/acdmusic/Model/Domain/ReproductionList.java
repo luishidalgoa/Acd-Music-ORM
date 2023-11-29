@@ -1,7 +1,5 @@
 package dev.iesfranciscodelosrios.acdmusic.Model.Domain;
 
-import dev.iesfranciscodelosrios.acdmusic.Model.DTO.UserDTO;
-
 import java.util.*;
 import javax.persistence.*;
 
@@ -46,19 +44,19 @@ public class ReproductionList {
 
 
 
-    public ReproductionList(int id, String name, String description, UserDTO owner, Set<Song> songs, Set<Comment> comments) {
+    public ReproductionList(int id, String name, String description, User owner, Set<Song> songs, Set<Comment> comments) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.owner = UserDTO.toUser(owner);
+        this.owner = owner;
         this.songs = songs;
         this.comments = comments;
     }
 
-    public ReproductionList(String name, String description, UserDTO owner, Set<Song> songs, Set<Comment> comments) {
+    public ReproductionList(String name, String description, User owner, Set<Song> songs, Set<Comment> comments) {
         this.name = name;
         this.description = description;
-        this.owner = UserDTO.toUser(owner);
+        this.owner = owner;
         this.songs = songs;
         this.comments = comments;
     }
@@ -121,12 +119,8 @@ public class ReproductionList {
         this.description = description;
     }
 
-    public UserDTO getOwner() {
-        return new UserDTO(owner);
-    }
-
-    public void setOwner(UserDTO owner) {
-        this.owner = UserDTO.toUser(owner);
+    public User getOwner() {
+        return owner;
     }
 
     public Set<Song> getSongs() {

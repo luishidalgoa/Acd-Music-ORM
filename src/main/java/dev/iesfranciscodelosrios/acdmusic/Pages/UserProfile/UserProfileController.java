@@ -3,7 +3,6 @@ package dev.iesfranciscodelosrios.acdmusic.Pages.UserProfile;
 import dev.iesfranciscodelosrios.acdmusic.App;
 import dev.iesfranciscodelosrios.acdmusic.Components.ReproductionList_Card.ReproductionList_mediumCard;
 import dev.iesfranciscodelosrios.acdmusic.Model.DAO.ReproductionListDAO;
-import dev.iesfranciscodelosrios.acdmusic.Model.DTO.UserDTO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.ReproductionList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

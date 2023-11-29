@@ -4,8 +4,6 @@ import dev.iesfranciscodelosrios.acdmusic.App;
 import dev.iesfranciscodelosrios.acdmusic.Components.AlbumCard.AlbumCardController;
 import dev.iesfranciscodelosrios.acdmusic.Components.GenericForm.GenericFormController;
 import dev.iesfranciscodelosrios.acdmusic.Model.DAO.AlbumDAO;
-import dev.iesfranciscodelosrios.acdmusic.Model.DAO.UserDAO;
-import dev.iesfranciscodelosrios.acdmusic.Model.DTO.ArtistDTO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Album;
 import dev.iesfranciscodelosrios.acdmusic.Model.Enum.Style;
 import dev.iesfranciscodelosrios.acdmusic.Services.FilesS;

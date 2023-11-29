@@ -1,7 +1,6 @@
 package dev.iesfranciscodelosrios.acdmusic.Model.DAO;
 
 import dev.iesfranciscodelosrios.acdmusic.Interfaces.iUserDAO;
-import dev.iesfranciscodelosrios.acdmusic.Model.DTO.UserDTO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.User;
 
 import javax.persistence.EntityManager;
@@ -33,22 +32,22 @@ public class UserORM extends User implements iUserDAO  {
     }
 
     @Override
-    public UserDTO searchByEmail(String email) {
+    public User searchByEmail(String email) {
         return null;
     }
 
     @Override
-    public UserDTO searchByNickname(String nickname) {
+    public User searchByNickname(String nickname) {
         return null;
     }
 
     @Override
-    public Set<UserDTO> searchByName(String filterWord) {
+    public Set<User> searchByName(String filterWord) {
         return null;
     }
 
     @Override
-    public UserDTO searchById(int idUser) {
+    public User searchById(int idUser) {
         return null;
     }
 }
