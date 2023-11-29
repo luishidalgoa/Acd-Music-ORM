@@ -86,7 +86,7 @@ public class SongDAO implements iSongDAO {
         try {
             manager.getTransaction().begin();
             Set<Song> songs = new HashSet<>();
-            songs.addAll(manager.createQuery("FROM Song WHERE album.idAlbum = :idAlbum", Song.class)
+            songs.addAll(manager.createQuery("FROM Song WHERE album.id = :idAlbum", Song.class)
                     .setParameter("idAlbum", idAlbum)
                     .getResultList());
             manager.getTransaction().commit();
@@ -121,7 +121,7 @@ public class SongDAO implements iSongDAO {
         EntityManager manager = ConnectionData.emf.createEntityManager();
         manager.getTransaction().begin();
         Set<Song> songs = new HashSet<>();
-        songs.addAll(manager.createQuery("FROM Song ORDER BY id_song DESC", Song.class).setMaxResults(4).getResultList());
+        songs.addAll(manager.createQuery("FROM Song ORDER BY id DESC", Song.class).setMaxResults(4).getResultList());
         if (songs.isEmpty()) {
             return null;
         }

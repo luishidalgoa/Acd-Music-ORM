@@ -109,7 +109,7 @@ public class AlbumDAO implements iAlbumDAO {
         EntityManager manager = ConnectionData.emf.createEntityManager();
         try {
             manager.getTransaction().begin();
-            Album album = manager.createQuery("SELECT s.album FROM Song s WHERE s.id_song = :idSong", Album.class)
+            Album album = manager.createQuery("SELECT s.album FROM Song s WHERE s.id = :idSong", Album.class)
                     .setParameter("idSong", idSong)
                     .getSingleResult();
             manager.getTransaction().commit();

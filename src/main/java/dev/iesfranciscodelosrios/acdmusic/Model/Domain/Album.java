@@ -11,7 +11,7 @@ public class Album implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID_ALBUM")
-    private int idAlbum;
+    private int id;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_ARTIST")
     private Artist artist;
@@ -27,8 +27,8 @@ public class Album implements Serializable {
     private List<Song> songs;
 
 
-    public Album(int idAlbum, Artist artist, String name, String date, String picture, Integer reproductions, List<Song> songs) {
-        this.idAlbum = idAlbum;
+    public Album(int id, Artist artist, String name, String date, String picture, Integer reproductions, List<Song> songs) {
+        this.id = id;
         this.artist = artist;
         this.name = name;
         this.date = date;
@@ -51,11 +51,11 @@ public class Album implements Serializable {
     }
 
     public int getIdAlbum() {
-        return idAlbum;
+        return id;
     }
 
     public void setIdAlbum(int idAlbum) {
-        this.idAlbum = idAlbum;
+        this.id = idAlbum;
     }
 
     public Artist getArtist() {
@@ -115,18 +115,18 @@ public class Album implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Album album = (Album) o;
-        return idAlbum == album.idAlbum;
+        return id == album.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idAlbum);
+        return Objects.hash(id);
     }
 
     @Override
     public String toString() {
         return "Album{" +
-                "idAlbum=" + idAlbum +
+                "idAlbum=" + id +
                 ", artist=" + artist +
                 ", name='" + name + '\'' +
                 ", date='" + date + '\'' +
