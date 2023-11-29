@@ -14,7 +14,7 @@ public class Album implements Serializable {
     private int id;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_ARTIST")
-    private Artist artist;
+    private User user;
     @Column(name = "NAME")
     private String name;
     @Column(name = "DATE")
@@ -27,9 +27,9 @@ public class Album implements Serializable {
     private List<Song> songs;
 
 
-    public Album(int id, Artist artist, String name, String date, String picture, Integer reproductions, List<Song> songs) {
+    public Album(int id, User user, String name, String date, String picture, Integer reproductions, List<Song> songs) {
         this.id = id;
-        this.artist = artist;
+        this.user = user;
         this.name = name;
         this.date = date;
         this.picture = picture;
@@ -37,8 +37,8 @@ public class Album implements Serializable {
         this.songs = songs;
     }
 
-    public Album(Artist artist, String name, String date, String picture, Integer reproductions, List<Song> songs) {
-        this.artist = artist;
+    public Album(User user, String name, String date, String picture, Integer reproductions, List<Song> songs) {
+        this.user = user;
         this.name = name;
         this.date = date;
         this.picture = picture;
@@ -58,12 +58,12 @@ public class Album implements Serializable {
         this.id = idAlbum;
     }
 
-    public Artist getArtist() {
-        return artist;
+    public User getUser() {
+        return user;
     }
 
-    public void setArtist(Artist artist) {
-        this.artist = artist;
+    public void setUser(User artist) {
+        this.user = artist;
     }
 
     public String getName() {
@@ -127,7 +127,7 @@ public class Album implements Serializable {
     public String toString() {
         return "Album{" +
                 "idAlbum=" + id +
-                ", artist=" + artist +
+                ", artist=" + user +
                 ", name='" + name + '\'' +
                 ", date='" + date + '\'' +
                 ", picture='" + picture + '\'' +
