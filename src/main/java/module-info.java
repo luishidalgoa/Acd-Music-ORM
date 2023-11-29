@@ -6,6 +6,7 @@ module dev.iesfranciscodelosrios.acdmusic {
     requires java.xml;
     requires java.xml.bind;
 
+
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
 
