@@ -2,12 +2,7 @@ package dev.iesfranciscodelosrios.acdmusic.Services;
 
 import dev.iesfranciscodelosrios.acdmusic.Interfaces.iLogin;
 import dev.iesfranciscodelosrios.acdmusic.Model.DAO.UserDAO;
-import dev.iesfranciscodelosrios.acdmusic.Model.DTO.UserDTO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.User;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

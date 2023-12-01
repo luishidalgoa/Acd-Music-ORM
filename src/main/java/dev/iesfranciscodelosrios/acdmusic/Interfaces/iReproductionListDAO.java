@@ -1,7 +1,5 @@
 package dev.iesfranciscodelosrios.acdmusic.Interfaces;
 
-import dev.iesfranciscodelosrios.acdmusic.Model.DTO.UserDTO;
-import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Album;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Comment;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.ReproductionList;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Song;

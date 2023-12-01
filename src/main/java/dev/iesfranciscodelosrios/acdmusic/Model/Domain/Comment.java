@@ -1,7 +1,5 @@
 package dev.iesfranciscodelosrios.acdmusic.Model.Domain;
 
-import dev.iesfranciscodelosrios.acdmusic.Model.DTO.UserDTO;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 @Entity

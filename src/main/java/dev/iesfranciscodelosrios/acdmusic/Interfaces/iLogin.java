@@ -1,6 +1,5 @@
 package dev.iesfranciscodelosrios.acdmusic.Interfaces;
 
-import dev.iesfranciscodelosrios.acdmusic.Model.DTO.UserDTO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.User;
 
 public interface iLogin {
