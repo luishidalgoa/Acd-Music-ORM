@@ -3,6 +3,7 @@ package dev.iesfranciscodelosrios.acdmusic.Interfaces;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Comment;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.ReproductionList;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Song;
+import dev.iesfranciscodelosrios.acdmusic.Model.Domain.User;
 
 import java.util.Set;
 
@@ -54,7 +55,7 @@ public interface iReproductionListDAO {
      * @param user
      * @return devuelve true o false dependiendo de si se ha encontrado la cancion dentro de la lista
      */
-    public boolean removeSong(int idSong,int idReproductionList, UserDTO user);
+    public boolean removeSong(int idSong,int idReproductionList, User user);
 
     /**
      * este metodo  devolvera una lista Set con todas las listas a las que un usuario esta subcrito.

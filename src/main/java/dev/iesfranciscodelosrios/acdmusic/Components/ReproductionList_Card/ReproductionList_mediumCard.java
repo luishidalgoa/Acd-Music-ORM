@@ -3,6 +3,7 @@ package dev.iesfranciscodelosrios.acdmusic.Components.ReproductionList_Card;
 import dev.iesfranciscodelosrios.acdmusic.App;
 import dev.iesfranciscodelosrios.acdmusic.Model.DAO.ReproductionListDAO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.ReproductionList;
+import dev.iesfranciscodelosrios.acdmusic.Model.Domain.User;
 import dev.iesfranciscodelosrios.acdmusic.Services.Login;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -30,7 +31,7 @@ public class ReproductionList_mediumCard extends ReproductionList_Card{
      * si el usuario esta subscrito se desubscribe y viceversa
      */
     public void toggleSubcribe() {
-        UserDTO currentUser = Login.getInstance().getCurrentUser();
+        User currentUser = Login.getInstance().getCurrentUser();
         if (ReproductionListDAO.getInstance().getSubcribeToListByUser(currentUser.getId(), rl.getId())) {
             if(currentUser.equals(rl.getOwner())) {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

@@ -37,6 +37,7 @@ public class UserORM extends User implements iUserDAO  {
     }
 
     @Override
+<<<<<<< HEAD
     public UserDTO searchByEmail(String email) {
         EntityManager manager = ConnectionData.emf.createEntityManager();
         manager.getTransaction().begin();
@@ -48,19 +49,24 @@ public class UserORM extends User implements iUserDAO  {
         UserDTO dto = new UserDTO(user);
 
         return dto;
+=======
+    public User searchByEmail(String email) {
+        return null;
+>>>>>>> 20729a84b2fc5d23a346a023da2580dab22ef216
     }
 
     @Override
-    public UserDTO searchByNickname(String nickname) {
+    public User searchByNickname(String nickname) {
         return null;
     }
 
     @Override
-    public Set<UserDTO> searchByName(String filterWord) {
+    public Set<User> searchByName(String filterWord) {
         return null;
     }
 
     @Override
+<<<<<<< HEAD
     public UserDTO searchById(int idUser) {
         EntityManager manager = ConnectionData.emf.createEntityManager();
         manager.getTransaction().begin();
@@ -71,5 +77,9 @@ public class UserORM extends User implements iUserDAO  {
         UserDTO dto = new UserDTO(user);
 
         return dto;
+=======
+    public User searchById(int idUser) {
+        return null;
+>>>>>>> 20729a84b2fc5d23a346a023da2580dab22ef216
     }
 }
