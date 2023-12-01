@@ -5,6 +5,7 @@ import dev.iesfranciscodelosrios.acdmusic.Components.AlbumCard.AlbumCardControll
 import dev.iesfranciscodelosrios.acdmusic.Components.GenericForm.GenericFormController;
 import dev.iesfranciscodelosrios.acdmusic.Model.DAO.AlbumDAO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Album;
+import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Artist;
 import dev.iesfranciscodelosrios.acdmusic.Model.Enum.Style;
 import dev.iesfranciscodelosrios.acdmusic.Services.FilesS;
 import dev.iesfranciscodelosrios.acdmusic.Services.Login;
@@ -36,7 +37,7 @@ public class ArtistProfileController {
     private Label nacionality;
     @FXML
     private Pane upload;
-    private ArtistDTO artist;
+    private Artist artist;
     private Scene uploadScene;
 
     @FXML
@@ -50,7 +51,7 @@ public class ArtistProfileController {
         img_picture.setClip(clip);
     }
 
-    public void setData(ArtistDTO artist) {
+    public void setData(Artist artist) {
         this.artist = artist;
         label_name.setText(artist.getNickName());
         File img = new File(artist.getPicture());

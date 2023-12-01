@@ -3,6 +3,7 @@ package dev.iesfranciscodelosrios.acdmusic.Model.DAO;
 import dev.iesfranciscodelosrios.acdmusic.Connection.ConnectionData;
 import dev.iesfranciscodelosrios.acdmusic.Interfaces.iAlbumDAO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Album;
+import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Artist;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -58,7 +59,7 @@ public class AlbumDAO implements iAlbumDAO {
     }
 
     @Override
-    public Set<Album> searchAllAlbumsByArtist(ArtistDTO artist) {
+    public Set<Album> searchAllAlbumsByArtist(Artist artist) {
         EntityManager manager = ConnectionData.emf.createEntityManager();
         manager.getTransaction().begin();
         Set<Album> albums = new HashSet<>(manager.createQuery("FROM Album a WHERE a.artist = :artist", Album.class)
