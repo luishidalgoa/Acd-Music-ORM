@@ -1,7 +1,6 @@
 package dev.iesfranciscodelosrios.acdmusic.Services;
 
 import dev.iesfranciscodelosrios.acdmusic.Interfaces.iLogin;
-import dev.iesfranciscodelosrios.acdmusic.Model.DAO.UserDAO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.User;
 
 import java.security.MessageDigest;

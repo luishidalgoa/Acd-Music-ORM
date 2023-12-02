@@ -6,9 +6,7 @@ import java.util.Set;
 @Table
 public class User {
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     protected int id;
     @Column(name = "NICKNAME")

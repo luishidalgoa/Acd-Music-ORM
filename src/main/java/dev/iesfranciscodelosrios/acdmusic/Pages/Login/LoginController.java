@@ -1,9 +1,7 @@
 package dev.iesfranciscodelosrios.acdmusic.Pages.Login;
 
 import dev.iesfranciscodelosrios.acdmusic.App;
-import dev.iesfranciscodelosrios.acdmusic.Model.DAO.UserDAO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.User;
-import dev.iesfranciscodelosrios.acdmusic.Pages.Hub.HubController;
 import dev.iesfranciscodelosrios.acdmusic.Services.Login;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
