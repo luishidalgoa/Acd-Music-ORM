@@ -3,6 +3,7 @@ package dev.iesfranciscodelosrios.acdmusic.Model.Domain;
 import javax.persistence.*;
 import java.util.Set;
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table
 public class User {
     private static final long serialVersionUID = 1L;

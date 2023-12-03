@@ -1,6 +1,7 @@
 package dev.iesfranciscodelosrios.acdmusic.Services;
 
 import dev.iesfranciscodelosrios.acdmusic.Interfaces.iLogin;
+import dev.iesfranciscodelosrios.acdmusic.Model.DAO.UserDAO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.User;
 
 import java.security.MessageDigest;
@@ -15,7 +16,7 @@ public class Login implements iLogin {
 
     private static User currentUser;
 
-    private UserDAO udao= new UserDAO();
+    private UserDAO udao = UserDAO.getInstance();
 
     /**
      * Metodo para autentificar que el usuario se loguea con nickname y password correctos, además
@@ -28,7 +29,7 @@ public class Login implements iLogin {
         if (user == null) {
             return null;
         } else {
-            User BDUser = udao.searchByNicknameLogin(user.getNickName());
+            User BDUser = udao.searchByNickname(user.getNickName());
             if(BDUser!=null && BDUser.getPassword().equals(encryptPassword(user.getPassword()))){
                 User result = UserDAO.getInstance().searchById(BDUser.getId());
                 setCurrentUser(result);
@@ -77,9 +78,8 @@ public class Login implements iLogin {
         } else {
             user.setPassword(encryptPassword(user.getPassword()));
             udao.addUser(user);
-            User result = udao.setUserToUserDTO(user);
-            setCurrentUser(result);
-            return result;
+            setCurrentUser(user);
+            return user;
         }
     }
 
