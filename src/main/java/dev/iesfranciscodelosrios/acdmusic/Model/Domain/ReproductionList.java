@@ -1,33 +1,63 @@
 package dev.iesfranciscodelosrios.acdmusic.Model.Domain;
 
-import dev.iesfranciscodelosrios.acdmusic.Model.DTO.UserDTO;
+import java.util.*;
+import javax.persistence.*;
 
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Set;
-
+@Entity
+@Table
 public class ReproductionList {
-    int id;
-    String name;
-    String description;
-    UserDTO owner;
-    Set<Song> Songs;
-    ArrayList<Comment> comments;
 
-    public ReproductionList(int id, String name, String description, UserDTO owner, Set<Song> songs, ArrayList<Comment> comments) {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_reproductionList")
+    private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "id_user")
+    private User owner;
+
+    @ManyToMany
+    @JoinTable(
+            name = "reproductionsonglist",
+            joinColumns = @JoinColumn(name = "id_lista"),
+            inverseJoinColumns = @JoinColumn(name = "id_cancion")
+    )
+    private Set<Song> songs;
+
+    @OneToMany(mappedBy = "reproductionList", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Comment> comments;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "description")
+    private String description;
+
+    @ManyToMany
+    @JoinTable(
+            name = "usersubscriptionlist",
+            joinColumns = @JoinColumn(name = "id_reproductionlist"),
+            inverseJoinColumns = @JoinColumn(name = "id_user")
+    )
+    private Set<User> subscribedUsers;
+
+
+
+
+    public ReproductionList(int id, String name, String description, User owner, Set<Song> songs, Set<Comment> comments) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.owner = owner;
-        this.Songs = songs;
+        this.songs = songs;
         this.comments = comments;
     }
 
-    public ReproductionList(String name, String description, UserDTO owner, Set<Song> songs, ArrayList<Comment> comments) {
+    public ReproductionList(String name, String description, User owner, Set<Song> songs, Set<Comment> comments) {
         this.name = name;
         this.description = description;
         this.owner = owner;
-        this.Songs = songs;
+        this.songs = songs;
         this.comments = comments;
     }
 
@@ -36,7 +66,7 @@ public class ReproductionList {
         this.name = "";
         this.description = "";
         this.owner = null;
-        this.Songs = null;
+        this.songs = null;
         this.comments = null;
     }
 
@@ -47,7 +77,7 @@ public class ReproductionList {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", owner=" + owner +
-                ", Songs=" + Songs +
+                ", Songs=" + songs +
                 ", comments=" + comments +
                 '}';
     }
@@ -89,27 +119,35 @@ public class ReproductionList {
         this.description = description;
     }
 
-    public UserDTO getOwner() {
+    public User getOwner() {
         return owner;
     }
 
-    public void setOwner(UserDTO owner) {
-        this.owner = owner;
-    }
-
     public Set<Song> getSongs() {
-        return Songs;
+        return songs;
     }
 
     public void setSongs(Set<Song> songs) {
-        Songs = songs;
+        this.songs = songs;
     }
 
-    public ArrayList<Comment> getComments() {
+    public Set<Comment> getComments() {
         return comments;
     }
 
-    public void setComments(ArrayList<Comment> comments) {
+    public void setComments(Set<Comment> comments) {
         this.comments = comments;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public Set<User> getSubscribedUsers() {
+        return subscribedUsers;
+    }
+
+    public void setSubscribedUsers(Set<User> subscribedUsers) {
+        this.subscribedUsers = subscribedUsers;
     }
 }

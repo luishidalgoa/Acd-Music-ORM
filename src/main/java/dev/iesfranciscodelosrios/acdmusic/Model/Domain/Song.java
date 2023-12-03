@@ -2,22 +2,38 @@ package dev.iesfranciscodelosrios.acdmusic.Model.Domain;
 
 import dev.iesfranciscodelosrios.acdmusic.Model.Enum.Genre;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Time;
 import java.time.LocalTime;
 import java.util.Objects;
-
-public class Song {
+@Entity
+@Table(name = "SONG")
+public class Song implements Serializable {
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="ID_SONG")
     private int id_song;
-    private int id_album;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ID_ALBUM")
+    private Album album;
+    @Column(name = "NAME")
     private String name;
+    @Column(name = "URL")
     private String url;
+    @Column(name = "LOCALTIME")
     private LocalTime length;
+    @Enumerated(EnumType.STRING)
     private Genre genre;
+    @Column(name = "REPRODUCTIONS")
     int reproductions;
 
-    public Song(int id_song, int id_album, String name, String url, LocalTime length, Genre genre, int reproductions) {
+
+
+    public Song(int id_song, Album album, String name, String url, LocalTime length, Genre genre, int reproductions) {
         this.id_song = id_song;
-        this.id_album = id_album;
+        this.album = album;
         this.name = name;
         this.url = url;
         this.length = length;
@@ -25,8 +41,8 @@ public class Song {
         this.reproductions = reproductions;
     }
 
-    public Song(int id_album, String name, String url, LocalTime length, Genre genre, int reproductions) {
-        this.id_album = id_album;
+    public Song(Album album, String name, String url, LocalTime length, Genre genre, int reproductions) {
+        this.album = album;
         this.name = name;
         this.url = url;
         this.length = length;
@@ -41,20 +57,13 @@ public class Song {
     public Song() {
     }
 
+
     public int getId_song() {
         return id_song;
     }
 
     public void setId_song(int id_song) {
         this.id_song = id_song;
-    }
-
-    public int getId_album() {
-        return id_album;
-    }
-
-    public void setId_album(int id_album) {
-        this.id_album = id_album;
     }
 
     public String getName() {
@@ -89,6 +98,22 @@ public class Song {
         this.genre = genre;
     }
 
+    public Album getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
+
+    public LocalTime getLength() {
+        return length;
+    }
+
+    public void setLength(LocalTime length) {
+        this.length = length;
+    }
+
     public int getReproductions() {
         return reproductions;
     }
@@ -114,12 +139,13 @@ public class Song {
     public String toString() {
         return "Song{" +
                 "id_song=" + id_song +
-                ", id_album=" + id_album +
+                ", album=" + album +
                 ", name='" + name + '\'' +
                 ", url='" + url + '\'' +
-                ", time=" + length +
+                ", length=" + length +
                 ", genre=" + genre +
                 ", reproductions=" + reproductions +
                 '}';
     }
+
 }

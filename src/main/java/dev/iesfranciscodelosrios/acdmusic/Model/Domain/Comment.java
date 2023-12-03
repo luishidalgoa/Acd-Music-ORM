@@ -1,30 +1,39 @@
 package dev.iesfranciscodelosrios.acdmusic.Model.Domain;
 
-import dev.iesfranciscodelosrios.acdmusic.Model.DTO.UserDTO;
 
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "commentlistusers")
 public class Comment {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_comment")
     private int id;
-    private UserDTO user;
-    private int reproductionListId;
-    private LocalDateTime date;
-    private String description;
 
-    public Comment(int id, UserDTO userId, int reproductionListId, LocalDateTime date, String description) {
-        this.id = id;
-        this.user = userId;
-        this.reproductionListId = reproductionListId;
-        this.date = date;
-        this.description = description;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_user")
+    private User user;
+
+    @Column(name = "id_reproduction_list")
+    private int reproductionListId;
+
+    @Column(name = "date")
+    private LocalDateTime date;
+
+    @Column(name = "description")
+    private String description;
 
     public Comment() {
     }
 
-    public Comment(UserDTO userId, int reproductionListId, String description) {
-        this.user = userId;
+    public Comment(User user, int reproductionListId, LocalDateTime date, String description) {
+        this.user = user;
         this.reproductionListId = reproductionListId;
+        this.date = date;
         this.description = description;
     }
 
@@ -36,11 +45,11 @@ public class Comment {
         this.id = id;
     }
 
-    public UserDTO getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(UserDTO user) {
+    public void setUser(User user) {
         this.user = user;
     }
 

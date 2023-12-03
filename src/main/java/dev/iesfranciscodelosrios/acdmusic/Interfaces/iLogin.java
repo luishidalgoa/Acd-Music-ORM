@@ -1,6 +1,5 @@
 package dev.iesfranciscodelosrios.acdmusic.Interfaces;
 
-import dev.iesfranciscodelosrios.acdmusic.Model.DTO.UserDTO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.User;
 
 public interface iLogin {
@@ -11,7 +10,7 @@ public interface iLogin {
      * @param user objeto usuario con los datos del usuario y la contraseña sin encriptar
      * @return objeto UserDTO con los datos del usuario sin la contraseña si el inicio de sesion no ha sido correcto devolvera null
      */
-    public UserDTO Auth(User user);
+    public User Auth(User user);
     /**
      * esta funcion devolvera la contraseña encriptada. Podria ser usado por el mismo metodo Auth().
      *
@@ -26,7 +25,7 @@ public interface iLogin {
      * @param user objeto usuario con los datos del usuario y la contraseña sin encriptar
      * @return objeto UserDTO con los datos del usuario sin la contraseña si el registro no ha sido correcto devolvera null
      */
-    public UserDTO Register(User user);
+    public User Register(User user);
     /**
      * se encarga de cerrar sesion y establecer el usuario actual a null
      *

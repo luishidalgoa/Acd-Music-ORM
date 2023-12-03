@@ -1,13 +1,29 @@
 package dev.iesfranciscodelosrios.acdmusic.Model.Domain;
 
+import javax.persistence.*;
+import java.util.Set;
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table
 public class User {
+    private static final long serialVersionUID = 1L;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
     protected int id;
+    @Column(name = "NICKNAME")
     protected String nickName;
+    @Column(name = "NAME")
     protected String name;
+    @Column(name = "LASTNAME")
     protected String lastName;
+    @Column(name = "PICTURE")
     protected String picture;
+    @Column(name = "EMAIL")
     protected String email;
+    @Column(name = "PASSWORD")
     private String password;
+    @ManyToMany(mappedBy = "subscribedUsers")
+    private Set<ReproductionList> subscribedLists;
 
     public User(int id, String nickName, String name, String lastName, String picture, String email, String password) {
         this.id = id;
@@ -44,6 +60,12 @@ public class User {
         this.email = email;
     }
 
+    public Set<ReproductionList> getSubscribedLists() {
+        return subscribedLists;
+    }
+    public void setSubscribedLists(Set<ReproductionList> subscribedLists) {
+        this.subscribedLists = subscribedLists;
+    }
     public int getId() {
         return id;
     }
