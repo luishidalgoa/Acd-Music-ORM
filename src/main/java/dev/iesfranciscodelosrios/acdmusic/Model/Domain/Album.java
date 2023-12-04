@@ -5,7 +5,6 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.lang.annotation.Repeatable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 @Entity
@@ -138,4 +137,5 @@ public class Album implements Serializable {
                 ", songs=" + songs +
                 '}';
     }
+
 }

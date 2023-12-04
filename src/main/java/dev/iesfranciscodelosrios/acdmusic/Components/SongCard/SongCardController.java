@@ -2,6 +2,7 @@ package dev.iesfranciscodelosrios.acdmusic.Components.SongCard;
 
 import dev.iesfranciscodelosrios.acdmusic.App;
 import dev.iesfranciscodelosrios.acdmusic.Model.DAO.AlbumDAO;
+import dev.iesfranciscodelosrios.acdmusic.Model.DAO.ArtistDAO;
 import dev.iesfranciscodelosrios.acdmusic.Model.DAO.ReproductionListDAO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.ReproductionList;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Song;
@@ -53,7 +54,7 @@ public class SongCardController {
     public void setData(Song song) {
         this.song = song;
         song_name.setText(song.getName());
-        artist_name.setText(ArtistDAO.getInstance().searchArtistByIdSong(song.getId_song()).getNickName());
+        artist_name.setText(song.getAlbum().getArtist().getNickName());
         total_view.setText(String.valueOf(song.getReproductions()));
         duration.setText(song.getTime().format(DateTimeFormatter.ofPattern("mm:ss")));
 
@@ -117,7 +118,7 @@ public class SongCardController {
         try {
             Node node=fxmlLoader.load();
             ArtistProfileController controller = fxmlLoader.getController();
-            controller.setData(ArtistDAO.getInstance().searchArtistByIdSong(song.getId_song()));
+            controller.setData(song.getAlbum().getArtist());
             App.hubController.setViewsContainer(node);
         } catch (IOException e) {
             throw new RuntimeException(e);
