@@ -6,9 +6,11 @@ import dev.iesfranciscodelosrios.acdmusic.Components.ArtistCard.ArtistCardContro
 import dev.iesfranciscodelosrios.acdmusic.Components.ReproductionList_Card.ReproductionList_mediumCard;
 import dev.iesfranciscodelosrios.acdmusic.Components.SongCard.SongCardController;
 import dev.iesfranciscodelosrios.acdmusic.Model.DAO.AlbumDAO;
+import dev.iesfranciscodelosrios.acdmusic.Model.DAO.ArtistDAO;
 import dev.iesfranciscodelosrios.acdmusic.Model.DAO.ReproductionListDAO;
 import dev.iesfranciscodelosrios.acdmusic.Model.DAO.SongDAO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Album;
+import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Artist;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.ReproductionList;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Song;
 import dev.iesfranciscodelosrios.acdmusic.Model.Enum.Style;
@@ -43,7 +45,7 @@ public class HomeController {
         Set<ReproductionList>rl = ReproductionListDAO.getInstance().getUserSubcriptions(Login.getInstance().getCurrentUser().getId());
         setReproductionList(rl,"Yours reproduction list");
 
-        Set<ArtistDTO>artist = ArtistDAO.getInstance().searchArtistByName("");
+        Set<Artist>artist = ArtistDAO.getInstance().searchArtistByName("");
         setArtist(artist);
 
         Set<Song>latestSongs = SongDAO.getInstance().searchRecientSongs();
@@ -90,12 +92,12 @@ public class HomeController {
             }
         }
     }
-    public void setArtist(Set<ArtistDTO> artists){
+    public void setArtist(Set<Artist> artists){
         Label artistLabel=new Label("Artists Recommend");
         artistLabel.setStyle(Style.h1.getStyle());
         vbox_container.getChildren().add(artistLabel);
         if (artists!=null && !artists.isEmpty()){
-            for (ArtistDTO aux : artists) {
+            for (Artist aux : artists) {
                 FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Components/ArtistCard/ArtistCard.fxml"));
                 try {
                     Node card = fxmlLoader.load();

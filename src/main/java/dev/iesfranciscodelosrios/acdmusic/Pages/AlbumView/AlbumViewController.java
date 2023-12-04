@@ -127,7 +127,7 @@ public class AlbumViewController {
                     TextField nameSong = ((TextField) controller.getNode("songName" + i));
                     ComboBox genre = ((ComboBox) controller.getNode("genre" + i));
                     Song song = new Song();
-                    song.setId_album(album.getIdAlbum());
+                    song.setAlbum(album);
                     song.setName(nameSong.getText());
                     song.setGenre(Genre.valueOf(genre.getValue().toString()));
                     String text = fileUrl.getText();

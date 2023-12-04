@@ -1,6 +1,7 @@
 package dev.iesfranciscodelosrios.acdmusic.Components.ArtistCard;
 
 import dev.iesfranciscodelosrios.acdmusic.App;
+import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Artist;
 import dev.iesfranciscodelosrios.acdmusic.Pages.ArtistProfile.ArtistProfileController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +18,7 @@ public class ArtistCardController {
     private Label label_ArtistName;
     @FXML
     private ImageView img_picture;
-    private ArtistDTO artist;
+    private Artist artist;
     @FXML
     public void initialize() {
         Circle clip = new Circle();
@@ -39,7 +40,7 @@ public class ArtistCardController {
             throw new RuntimeException(e);
         }
     }
-    public void setData(ArtistDTO artist) {
+    public void setData(Artist artist) {
         this.artist=artist;
         label_ArtistName.setText(artist.getName());
         File img = new File(artist.getPicture());
