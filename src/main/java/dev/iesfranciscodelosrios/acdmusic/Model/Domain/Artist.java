@@ -6,7 +6,6 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "artist")
-@PrimaryKeyJoinColumn(name = "ID")
 public class Artist extends User{
     private static final long serialVersionUID = 1L;
     @MapsId
