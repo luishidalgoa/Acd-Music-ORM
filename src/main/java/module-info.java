@@ -5,8 +5,7 @@ module dev.iesfranciscodelosrios.acdmusic {
     requires java.persistence;
     requires java.xml;
     requires java.xml.bind;
-
-
+    requires org.hibernate.orm.core;
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
 
@@ -42,5 +41,7 @@ module dev.iesfranciscodelosrios.acdmusic {
     opens dev.iesfranciscodelosrios.acdmusic.Pages.AlbumView;
     exports dev.iesfranciscodelosrios.acdmusic.Pages.Login;
     opens dev.iesfranciscodelosrios.acdmusic.Pages.Login;
+    opens dev.iesfranciscodelosrios.acdmusic.Model.Domain;
+
 
 }

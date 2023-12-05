@@ -9,7 +9,7 @@ import java.util.Objects;
 @Table(name = "ALBUM")
 public class Album implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue
     @Column(name="ID_ALBUM")
     private int idAlbum;
     @ManyToOne(fetch = FetchType.LAZY)

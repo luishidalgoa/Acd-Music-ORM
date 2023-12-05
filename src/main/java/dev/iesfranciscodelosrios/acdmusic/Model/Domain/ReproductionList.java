@@ -4,7 +4,7 @@ import java.util.*;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "REPRODUCTIONLIST")
 public class ReproductionList {
 
     @Id
@@ -33,6 +33,7 @@ public class ReproductionList {
     @Column(name = "description")
     private String description;
 
+
     @ManyToMany
     @JoinTable(
             name = "usersubscriptionlist",
@@ -40,8 +41,6 @@ public class ReproductionList {
             inverseJoinColumns = @JoinColumn(name = "id_user")
     )
     private Set<User> subscribedUsers;
-
-
 
 
     public ReproductionList(int id, String name, String description, User owner, Set<Song> songs, Set<Comment> comments) {
