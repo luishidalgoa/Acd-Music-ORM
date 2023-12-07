@@ -38,6 +38,7 @@ public class AlbumCardController {
         this.album = album;
         album_name.setText(album.getName());
         this.album_name.setText(album.getName());
+        System.out.println(album.getArtist());
         this.artist_name.setText(ArtistDAO.getInstance().searchArtistByIdAlbum(album.getIdAlbum()).getNickName());
         File img = new File(album.getPicture());
         if (img.exists()) {

@@ -85,7 +85,7 @@ public class ReproductionListDAO implements iReproductionListDAO {
         //CON HIBERNATE
         EntityManager manager = ConnectionData.emf.createEntityManager();
         User user = manager.find(User.class, idUser);
-        if (user != null) {
+        if (user != null && user.getSubscribedLists().size() >0) {
             Set<ReproductionList> result = user.getSubscribedLists();
             manager.close();
             return result;

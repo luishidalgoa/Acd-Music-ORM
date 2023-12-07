@@ -75,7 +75,7 @@ public class UserDAO extends User implements iUserDAO  {
     @Override
     public User searchByNickname(String nickname) {
        manager = ConnectionData.emf.createEntityManager();
-     /*    try {
+       try {
             manager.getTransaction().begin();
             User user = manager.createQuery("FROM User u WHERE u.nickName = :nickname", User.class)
                     .setParameter("nickname", nickname).getSingleResult();
@@ -85,7 +85,6 @@ public class UserDAO extends User implements iUserDAO  {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;*/
         return null;
     }
 

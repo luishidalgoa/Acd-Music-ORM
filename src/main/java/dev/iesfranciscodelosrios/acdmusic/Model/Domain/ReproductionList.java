@@ -9,7 +9,7 @@ public class ReproductionList {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_reproductionList")
+    @Column(name = "id")
     private int id;
 
     @ManyToOne
@@ -19,8 +19,8 @@ public class ReproductionList {
     @ManyToMany
     @JoinTable(
             name = "reproductionsonglist",
-            joinColumns = @JoinColumn(name = "id_lista"),
-            inverseJoinColumns = @JoinColumn(name = "id_cancion")
+            joinColumns = @JoinColumn(name = "id_reproductionList"),
+            inverseJoinColumns = @JoinColumn(name = "id_song")
     )
     private Set<Song> songs;
 

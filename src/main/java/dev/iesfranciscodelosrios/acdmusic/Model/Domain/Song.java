@@ -22,7 +22,7 @@ public class Song implements Serializable {
     private String name;
     @Column(name = "URL")
     private String url;
-    @Column(name = "LOCALTIME")
+    @Column(name = "lenght")
     private LocalTime length;
     @Enumerated(EnumType.STRING)
     private Genre genre;
