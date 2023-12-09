@@ -1,18 +1,15 @@
 package dev.iesfranciscodelosrios.acdmusic.Model.Domain;
 
 import javax.persistence.*;
-import java.io.Serial;
 import java.io.Serializable;
-import java.lang.annotation.Repeatable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 @Entity
 @Table(name = "ALBUM")
 public class Album implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue
     @Column(name="ID_ALBUM")
     private int idAlbum;
     @ManyToOne(fetch = FetchType.LAZY)

@@ -125,7 +125,7 @@ public class ReproductionListViewController extends ReproductionList_mediumCard 
         controller.eventBtnSend(()->{
             String comment=((TextField)controller.getNode("comment")).getText();
             if(comment.length()>0){
-               Comment aux=CommentDAO.getInstance().add(new Comment(Login.getInstance().getCurrentUser(), rl.getId(), comment));
+               Comment aux=CommentDAO.getInstance().add(new Comment(Login.getInstance().getCurrentUser(),rl,LocalDateTime.now(),comment));
                if (aux!=null){
                    aux.setDate(LocalDateTime.now());
                    loadCommentNode(aux);

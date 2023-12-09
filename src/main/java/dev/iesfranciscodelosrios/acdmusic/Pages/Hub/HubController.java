@@ -6,7 +6,9 @@ import dev.iesfranciscodelosrios.acdmusic.Components.MediaPlayer.MediaPlayerCont
 import dev.iesfranciscodelosrios.acdmusic.Components.ReproductionList_Card.ReproductionList_minCard;
 import dev.iesfranciscodelosrios.acdmusic.Components.Search.SearchController;
 import dev.iesfranciscodelosrios.acdmusic.Connection.ConnectionData;
+import dev.iesfranciscodelosrios.acdmusic.Model.DAO.ArtistDAO;
 import dev.iesfranciscodelosrios.acdmusic.Model.DAO.ReproductionListDAO;
+import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Artist;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.ReproductionList;
 import dev.iesfranciscodelosrios.acdmusic.Model.Enum.Style;
 import dev.iesfranciscodelosrios.acdmusic.Pages.ArtistProfile.ArtistProfileController;
@@ -106,7 +108,6 @@ public class HubController extends MediaPlayerController {
                         updateReproductionListsThread();
                     }
                 }catch (Exception e) {
-                    ConnectionData.getConnection();
                     // Captura la excepción y realiza las acciones necesarias
                     e.printStackTrace();
 
@@ -242,7 +243,7 @@ public class HubController extends MediaPlayerController {
     @FXML
     public void loadProfile(){
         FXMLLoader fxmlLoader;
-        ArtistDTO isArtist= ArtistDAO.getInstance().searchArtistByIdUser(Login.getInstance().getCurrentUser().getId());
+        Artist isArtist= ArtistDAO.getInstance().searchArtistByIdArtist(Login.getInstance().getCurrentUser().getId());
         if(isArtist==null){
             fxmlLoader = new FXMLLoader(App.class.getResource("Pages/UserProfile/UserProfile.fxml"));
         }else{

@@ -4,12 +4,12 @@ import java.util.*;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "REPRODUCTIONLIST")
 public class ReproductionList {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_reproductionList")
+    @Column(name = "id")
     private int id;
 
     @ManyToOne
@@ -19,8 +19,8 @@ public class ReproductionList {
     @ManyToMany
     @JoinTable(
             name = "reproductionsonglist",
-            joinColumns = @JoinColumn(name = "id_lista"),
-            inverseJoinColumns = @JoinColumn(name = "id_cancion")
+            joinColumns = @JoinColumn(name = "id_reproductionList"),
+            inverseJoinColumns = @JoinColumn(name = "id_song")
     )
     private Set<Song> songs;
 
@@ -33,6 +33,7 @@ public class ReproductionList {
     @Column(name = "description")
     private String description;
 
+
     @ManyToMany
     @JoinTable(
             name = "usersubscriptionlist",
@@ -40,8 +41,6 @@ public class ReproductionList {
             inverseJoinColumns = @JoinColumn(name = "id_user")
     )
     private Set<User> subscribedUsers;
-
-
 
 
     public ReproductionList(int id, String name, String description, User owner, Set<Song> songs, Set<Comment> comments) {

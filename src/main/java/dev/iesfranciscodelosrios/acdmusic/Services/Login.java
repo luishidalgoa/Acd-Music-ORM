@@ -16,7 +16,7 @@ public class Login implements iLogin {
 
     private static User currentUser;
 
-    private UserDAO udao = UserDAO.getInstance();
+    private UserDAO udao= UserDAO.getInstance();
 
     /**
      * Metodo para autentificar que el usuario se loguea con nickname y password correctos, además
@@ -78,8 +78,9 @@ public class Login implements iLogin {
         } else {
             user.setPassword(encryptPassword(user.getPassword()));
             udao.addUser(user);
-            setCurrentUser(user);
-            return user;
+            User result = user;
+            setCurrentUser(result);
+            return result;
         }
     }
 

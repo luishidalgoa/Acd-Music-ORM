@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table
+@Table(name = "USER")
 public class User {
     private static final long serialVersionUID = 1L;
     @Id @GeneratedValue(strategy = GenerationType.AUTO)

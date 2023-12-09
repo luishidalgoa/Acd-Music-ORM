@@ -4,6 +4,7 @@ import dev.iesfranciscodelosrios.acdmusic.App;
 import dev.iesfranciscodelosrios.acdmusic.Components.ReproductionList_Card.ReproductionList_mediumCard;
 import dev.iesfranciscodelosrios.acdmusic.Model.DAO.ReproductionListDAO;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.ReproductionList;
+import dev.iesfranciscodelosrios.acdmusic.Model.Domain.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -22,7 +23,7 @@ public class UserProfileController {
     private ImageView img_picture;
     @FXML
     private VBox vbox_container;
-    private UserDTO user;
+    private User user;
     @FXML
     public void initialize() {
         Circle clip = new Circle();
@@ -31,7 +32,7 @@ public class UserProfileController {
         clip.setCenterY(70);
         img_picture.setClip(clip);
     }
-    public void setData(UserDTO user){
+    public void setData(User user){
         this.user = user;
         label_name.setText(user.getNickName());
         File img = new File(user.getPicture());

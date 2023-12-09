@@ -71,7 +71,7 @@ public class ReproductionListDAO implements iReproductionListDAO {
         manager.getTransaction().begin();
         ReproductionList reproductionList = manager.find(ReproductionList.class, idList);
         if (reproductionList != null) {
-            reproductionList.getSubscribedUsers().add(UserDTO.toUser(manager.find(UserDTO.class, idUser)));
+            reproductionList.getSubscribedUsers().add(manager.find(User.class, idUser));
             manager.getTransaction().commit(); // Hacemos commit para que se guarde los cambios en la base de datos
             manager.close();
             return true;
@@ -85,7 +85,7 @@ public class ReproductionListDAO implements iReproductionListDAO {
         //CON HIBERNATE
         EntityManager manager = ConnectionData.emf.createEntityManager();
         User user = manager.find(User.class, idUser);
-        if (user != null) {
+        if (user != null && user.getSubscribedLists().size() >0) {
             Set<ReproductionList> result = user.getSubscribedLists();
             manager.close();
             return result;
@@ -113,7 +113,7 @@ public class ReproductionListDAO implements iReproductionListDAO {
         manager.getTransaction().begin();
         ReproductionList reproductionList = manager.find(ReproductionList.class, rl.getId());
         if (reproductionList != null) {
-            reproductionList.getSubscribedUsers().remove(UserDTO.toUser(manager.find(UserDTO.class, idUser)));
+            reproductionList.getSubscribedUsers().remove(manager.find(User.class, idUser));
             manager.getTransaction().commit(); // Hacemos commit para que se guarde los cambios en la base de datos
             manager.close();
             return true;
@@ -176,7 +176,7 @@ public class ReproductionListDAO implements iReproductionListDAO {
     }
 
     @Override
-    public boolean removeSong(int idSong, int idReproductionList, UserDTO user) {
+    public boolean removeSong(int idSong, int idReproductionList, User user) {
         EntityManager manager = ConnectionData.emf.createEntityManager();
         manager.getTransaction().begin();
         ReproductionList reproductionList = manager.find(ReproductionList.class, idReproductionList);

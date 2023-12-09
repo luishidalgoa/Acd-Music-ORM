@@ -18,8 +18,9 @@ public class Comment {
     @JoinColumn(name = "id_user")
     private User user;
 
-    @Column(name = "id_reproduction_list")
-    private int reproductionListId;
+    @ManyToOne
+    @JoinColumn(name = "id_reproductionlist")
+    private ReproductionList reproductionList;
 
     @Column(name = "date")
     private LocalDateTime date;
@@ -30,9 +31,9 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(User user, int reproductionListId, LocalDateTime date, String description) {
+    public Comment(User user, ReproductionList reproductionList, LocalDateTime date, String description) {
         this.user = user;
-        this.reproductionListId = reproductionListId;
+        this.reproductionList = reproductionList;
         this.date = date;
         this.description = description;
     }
@@ -53,12 +54,12 @@ public class Comment {
         this.user = user;
     }
 
-    public int getReproductionListId() {
-        return reproductionListId;
+    public ReproductionList getReproductionListId() {
+        return reproductionList;
     }
 
-    public void setReproductionListId(int reproductionListId) {
-        this.reproductionListId = reproductionListId;
+    public void setReproductionListId(ReproductionList reproductionList) {
+        this.reproductionList = reproductionList;
     }
 
     public LocalDateTime getDate() {

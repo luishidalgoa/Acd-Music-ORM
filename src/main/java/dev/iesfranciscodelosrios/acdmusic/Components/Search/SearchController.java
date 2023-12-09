@@ -3,6 +3,7 @@ package dev.iesfranciscodelosrios.acdmusic.Components.Search;
 import dev.iesfranciscodelosrios.acdmusic.App;
 import dev.iesfranciscodelosrios.acdmusic.Model.DAO.*;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Album;
+import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Artist;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.ReproductionList;
 import dev.iesfranciscodelosrios.acdmusic.Model.Domain.Song;
 import dev.iesfranciscodelosrios.acdmusic.Pages.Home.HomeController;
@@ -34,7 +35,7 @@ public class SearchController {
     private void searched(){
         String filterWord=input_filter.getText();
 
-        Set<ArtistDTO>artists=ArtistDAO.getInstance().searchArtistByName(filterWord);
+        Set<Artist>artists=ArtistDAO.getInstance().searchArtistByName(filterWord);
         Set<Album> albumes=AlbumDAO.getInstance().searchAlbumByName(filterWord);
         Set<ReproductionList> rls=ReproductionListDAO.getInstance().searchByName(filterWord);
         Set<Song> songs= SongDAO.getInstance().searchByNombre(filterWord);
